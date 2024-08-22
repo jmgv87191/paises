@@ -16,6 +16,17 @@
 
 <div class="row">
     <div class="col">
-        tabla de resultados
+
+        
+        <ul>
+            @for (item of countries; track $index) {
+
+                <li>
+                    {{ item.capital }} - {{ item.population }}
+                </li>
+            }
+        </ul>
+
+
     </div>
 </div>
