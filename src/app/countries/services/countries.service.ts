@@ -1,9 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Country } from '../interfaces/country';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountriesService {
 
-  constructor() { }
+  private apiUrl: string = 'https://restcountries.com/v3.1'
+
+  constructor( private http: HttpClient ) { }
+
+  searchCapital( term: string ):Observable<Country[]> {
+    return this.http.get<Country[]>( this.apiUrl + "/capital/"+ term  )
+  }
+
+
 }
