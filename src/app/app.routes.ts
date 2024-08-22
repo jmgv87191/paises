@@ -10,7 +10,7 @@ import { CountryPageComponent } from './countries/pages/country-page/country-pag
 export const routes: Routes = [
     {
         path:'',
-        component: HomePageComponent
+        component: ByCapitalPageComponent
     },
     {
         path:'about',
@@ -37,7 +37,7 @@ export const routes: Routes = [
         component: CountryPageComponent
     },
     {
-        path:'**',pathMatch:'full', redirectTo:'home'
+        path:'**',pathMatch:'full', redirectTo:''
     }
     
 ];
