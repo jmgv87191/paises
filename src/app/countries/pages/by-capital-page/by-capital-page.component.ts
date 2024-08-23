@@ -22,7 +22,7 @@ export class ByCapitalPageComponent {
 
     }) 
 
-  }
+  }asd
 
   constructor(  private _countriesService: CountriesService ){}
 
