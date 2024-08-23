@@ -30,7 +30,7 @@ searchByCountry(  term: string ):Observable<Country[]>{
 }
 
 searchByRegion( term: string):Observable<Country[]>{
-  return this.http.get<Country[]> ( this.apiUrl + "/name/"+ term )
+  return this.http.get<Country[]> ( this.apiUrl + "/region/"+ term )
   .pipe( 
     catchError ( () =>of([])
     )
