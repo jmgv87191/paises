@@ -16,15 +16,29 @@ export class CountriesService {
   searchCapital( term: string ):Observable<Country[]> {
     return this.http.get<Country[]>( this.apiUrl + "/capital/"+ term  )
     .pipe( 
-      catchError ( () =>{
-
-        return of([])
-      } 
-      
+      catchError ( () =>of([])
       )
-
   )
 }
+
+searchByCountry(  term: string ):Observable<Country[]>{
+  return this.http.get<Country[]>( this.apiUrl + "/name/"+ term  )
+  .pipe( 
+    catchError ( () =>of([])
+    )
+)
+}
+
+searchByRegion( term: string):Observable<Country[]>{
+  return this.http.get<Country[]> ( this.apiUrl + "/name/"+ term )
+  .pipe( 
+    catchError ( () =>of([])
+    )
+  )
+}
+
+
+
 
 
 }
