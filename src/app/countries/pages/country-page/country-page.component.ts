@@ -3,11 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CountriesService } from '../../services/countries.service';
 import { switchMap } from 'rxjs';
 import { Country } from '../../interfaces/country';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-country-page',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './country-page.component.html',
   styleUrl: './country-page.component.css'
 })
@@ -31,7 +32,6 @@ export class CountryPageComponent implements OnInit {
       }
 
       return this.country = country;
-
     } )
 
   }
