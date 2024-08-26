@@ -13,6 +13,13 @@ export class CountriesService {
 
   constructor( private http: HttpClient ) { }
 
+  private getCountriesRequest( url:string ): Observable<Country[]>{
+    return this.http.get<Country[]>( url ).pipe( 
+      catchError ( () =>of([])
+      )
+  )
+  }
+
   searchCountryByAlphaCode( code: string ):Observable<Country | null>{
     return this.http.get<Country[]>( this.apiUrl + "/alpha/"+ code  )
     .pipe( 
@@ -24,11 +31,12 @@ export class CountriesService {
   }
 
   searchCapital( term: string ):Observable<Country[]> {
-    return this.http.get<Country[]>( this.apiUrl + "/capital/"+ term  )
+    return this.getCountriesRequest( this.apiUrl + "/capital/"+ term )
+/*     this.http.get<Country[]>( this.apiUrl + "/capital/"+ term  )
     .pipe( 
       catchError ( () =>of([])
       )
-  )
+  ) */
 }
 
 searchByCountry(  term: string ):Observable<Country[]>{
