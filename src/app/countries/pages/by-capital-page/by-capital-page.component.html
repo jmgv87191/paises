@@ -5,9 +5,9 @@
 
     <div class="col">
         <!-- Search box -->
-            <app-search-box
+<!--         (onValue)="searchByCapital($event)"-->            <app-search-box
             placeholder="Buscar por capital"
-            (onValue)="searchByCapital($event)"
+            (onDebounce)="searchByCapital($event)"
             ></app-search-box>
             <hr>
     </div>
@@ -16,6 +16,12 @@
 
 <div class="row">
     <div class="col">
+
+        <hr>
+
+        @if (isLoading) {
+            <app-loading-spinner></app-loading-spinner>
+        }
 
         <app-country-table [countries]="countries" ></app-country-table>
 
