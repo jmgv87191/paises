@@ -8,7 +8,7 @@
         <!-- Search box -->
             <app-search-box
             placeholder="Buscar por pais"
-            (onValue)="searchByCountry($event)"
+            (onDebounce)="searchByCountry($event)"
             ></app-search-box>
             <hr>
     </div>
