@@ -1,4 +1,4 @@
-import { Component,  } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { SearchBoxComponent } from "../../../shared/components/search-box/search-box.component";
 import { Country } from '../../interfaces/country';
 import { CountriesService } from '../../services/countries.service';
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './by-regionl-page.component.html',
   styleUrl: './by-regionl-page.component.css'
 })
-export class ByRegionlPageComponent {
+export class ByRegionlPageComponent implements OnInit {
 
   countries: Country[] = [];
   public regions: string[] = [  'Africa','Americas','Asia','Europe','Oceania' ];
@@ -20,6 +20,13 @@ export class ByRegionlPageComponent {
 
 
   constructor( private countryServices:CountriesService ){}
+
+  ngOnInit(): void {
+
+    this.countries = this.countryServices.cacheStore.byRegion.countries
+    this.selectedRegion = this.countryServices.cacheStore.byRegion.region
+
+  }
 
   searchByRegion( term:string ){
 

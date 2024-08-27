@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SearchBoxComponent } from '../../../shared/components/search-box/search-box.component';
 import { Country } from '../../interfaces/country';
 import { CountryTableComponent } from "../../components/country-table/country-table.component";
@@ -11,12 +11,22 @@ import { CountriesService } from '../../services/countries.service';
   templateUrl: './by-countryl-page.component.html',
   styleUrl: './by-countryl-page.component.css'
 })
-export class ByCountrylPageComponent {
+export class ByCountrylPageComponent implements OnInit {
 
-  countries: Country[] = []
+  countries: Country[] = [];
+  public initialValue: string = '';
+
+
 
   constructor( private countriesService: CountriesService ){
     
+  }
+
+  ngOnInit(): void {
+
+    this.countries = this.countriesService.cacheStore.byCountries.countries
+    this.initialValue = this.countriesService.cacheStore.byCountries.term
+
   }
 
   searchByCountry( term:string ){
