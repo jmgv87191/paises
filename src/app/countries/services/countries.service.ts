@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of, delay } from 'rxjs';
+import { catchError, map, Observable, of, delay, tap } from 'rxjs';
 import { Country } from '../interfaces/country';
 import { HttpClient } from '@angular/common/http';
 import { error } from 'node:console';
@@ -42,6 +42,9 @@ export class CountriesService {
 
   searchCapital( term: string ):Observable<Country[]> {
     return this.getCountriesRequest( this.apiUrl + "/capital/"+ term )
+    .pipe(
+      tap( countries => this.cacheStore.byCapital = {  term, countries } )
+    )
 
 }
 

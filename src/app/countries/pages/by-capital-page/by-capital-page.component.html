@@ -5,10 +5,12 @@
 
     <div class="col">
         <!-- Search box -->
-<!--         (onValue)="searchByCapital($event)"-->            <app-search-box
+<!--         (onValue)="searchByCapital($event)"-->            
+        <app-search-box
             placeholder="Buscar por capital"
             (onDebounce)="searchByCapital($event)"
-            ></app-search-box>
+            [initialValue] = "initialValue"
+        ></app-search-box>
             <hr>
     </div>
     
