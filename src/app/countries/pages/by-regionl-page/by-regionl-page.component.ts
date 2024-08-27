@@ -24,7 +24,7 @@ export class ByRegionlPageComponent implements OnInit {
   ngOnInit(): void {
 
     this.countries = this.countryServices.cacheStore.byRegion.countries
-    this.selectedRegion = this.countryServices.cacheStore.byRegion.region
+    this.selectedRegion = this.countryServices.cacheStore.byRegion.region 
 
   }
 
